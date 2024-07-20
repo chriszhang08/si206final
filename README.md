@@ -9,7 +9,7 @@
 ## 2. Goals that Were Achieved (10 points)
 
 - **Achieved Goal 1:** Discovered that the letter "a" is the most common vowel in both texts, as is the letter "e".
-- **Achieved Goal 2:** [Description of the second achieved goal]
+- **Achieved Goal 2:** The letter a is actually the most common letter in both texts.
 
 ## 3. Problems that You Faced (10 points)
 
@@ -18,15 +18,26 @@
 
 ## 5. Visualization that You Created (10 points)
 
-![Visualization](path/to/visualization.png)
-[Provide a description of the visualization]
+![](pokemonvowelcount.png)
+Number of vowels in the Spanish flavor text of each Pokemon in the Pokedex.
+![](copavowelcount.png)
+Number of vowels in the Spanish text of the Copa 2024 Final article.
+
+![](letterpokemon.png)
+Complete letter frequency of the Spanish flavor text of each Pokemon in the Pokedex.
+![](copalettercount.png)
+Complete letter frequency of the Spanish text of the Copa 2024 Final article.
+
+The graphs in both examples are pretty similar, indicating the same distribution of vowels and letters in both texts.
+One can assume that this is due to the fact that both texts are in Spanish, and the language has a consistent
+distribution
 
 ## 6. Instructions for Running Your Code (10 points)
 
-
 ### Prerequisites
 
-Ensure you have Python installed on your system. You can download it from [python.org](https://www.python.org/downloads/).
+Ensure you have Python installed on your system. You can download it
+from [python.org](https://www.python.org/downloads/).
 
 ### Setting Up the Environment
 
@@ -50,7 +61,6 @@ Ensure you have Python installed on your system. You can download it from [pytho
    pip install -r requirements.txt
    ```
 
-
 ## 7. Documentation for Each Function (20 points)
 
 ### Function: `pokedex_query`
@@ -59,7 +69,8 @@ Ensure you have Python installed on your system. You can download it from [pytho
 - **Output:** the Spanish flavor text of each Pokemon
 
 This function queries the local SQLite database for the existing API endpoint associated with each Pokemon.
-The function then searches for the Spanish flavor text of each Pokemon in the input list, and inserts it to the database.
+The function then searches for the Spanish flavor text of each Pokemon in the input list, and inserts it to the
+database.
 
 ## 8. Resources Used (20 points)
 
