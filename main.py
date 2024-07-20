@@ -103,6 +103,22 @@ ax.set_title('Vowel Counts in Pokemon Flavor Text')
 plt.show()
 
 #%%
+# do the same but for every letter
+letter_counts = {}
+for row in rows:
+    for letter in row[5]:
+        letter_counts[letter] = letter_counts.get(letter, 0) + 1
+
+# plot the letter counts
+fig, ax = plt.subplots()
+ax.bar(letter_counts.keys(), letter_counts.values())
+ax.set_ylabel('Count')
+ax.set_xlabel('Letter')
+ax.set_title('Letter Counts in Pokemon Flavor Text')
+plt.show()
+
+
+#%%
 # count how many times each vowel appears in the scraped html
 c.execute('SELECT * FROM bagofwords')
 rows = c.fetchall()
@@ -118,4 +134,20 @@ ax.set_ylabel('Count')
 ax.set_xlabel('Vowel')
 ax.set_title('Vowel Counts in Scraped HTML')
 plt.show()
+
+#%%
+# count how many times each letter appears in the scraped html
+letter_counts = {}
+for row in rows:
+    for letter in row[0]:
+        letter_counts[letter] = letter_counts.get(letter, 0) + 1
+
+# plot the letter counts, make the graph red and as a percentage
+fig, ax = plt.subplots()
+ax.bar(letter_counts.keys(), letter_counts.values(), color='red')
+ax.set_ylabel('Count')
+ax.set_xlabel('Letter')
+ax.set_title('Letter Counts in Scraped HTML')
+plt.show()
+
 
