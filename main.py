@@ -1,7 +1,6 @@
 # %%
 import sqlite3
 import requests
-import json
 import bs4
 import matplotlib.pyplot as plt
 import numpy as np
@@ -22,7 +21,7 @@ conn.commit()
 c.execute("CREATE TABLE IF NOT EXISTS bagofwords (word TEXT PRIMARY KEY, count INTEGER)")
 conn.commit()
 
-# %%
+# %% def fill_pokedex()
 # fetch the pokedex from the pokeapi, limit the results to 25
 pokemon = requests.get('https://pokeapi.co/api/v2/pokedex/1')
 # jsonify the response
@@ -46,7 +45,7 @@ rows = c.fetchall()
 for row in rows:
     print(row)
 
-# %% query the pokedex for starter information
+# %% def pokedex_query()
 ids_to_fetch = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 c.execute('SELECT * FROM pokedex WHERE id IN ({})'.format(', '.join('?' * len(ids_to_fetch))), ids_to_fetch)
 rows = c.fetchall()
@@ -107,15 +106,20 @@ plt.show()
 letter_counts = {}
 for row in rows:
     for letter in row[5]:
-        letter_counts[letter] = letter_counts.get(letter, 0) + 1
+        letter = letter.lower()
+        if re.match('[a-z]', letter):
+            letter_counts[letter] = letter_counts.get(letter, 0) + 1
 
-# plot the letter counts
+# rearrange arrays in alphabetical order
+x_axis = list(letter_counts.keys())
+x_axis.sort()
+y_axis = [letter_counts[letter] for letter in x_axis]
+
 fig, ax = plt.subplots()
-ax.bar(letter_counts.keys(), letter_counts.values())
+ax.bar(x_axis, y_axis)
 ax.set_ylabel('Count')
 ax.set_xlabel('Letter')
 ax.set_title('Letter Counts in Pokemon Flavor Text')
-plt.show()
 
 
 #%%
@@ -140,14 +144,22 @@ plt.show()
 letter_counts = {}
 for row in rows:
     for letter in row[0]:
-        letter_counts[letter] = letter_counts.get(letter, 0) + 1
+        letter = letter.lower()
+        if re.match('[a-z]', letter):
+            letter_counts[letter] = letter_counts.get(letter, 0) + 1
 
-# plot the letter counts, make the graph red and as a percentage
+
+# plot the letter counts in alphabetical order
+x_axis = list(letter_counts.keys())
+x_axis.sort()
+y_axis = [letter_counts[letter] for letter in x_axis]
+
 fig, ax = plt.subplots()
-ax.bar(letter_counts.keys(), letter_counts.values(), color='red')
+ax.bar(x_axis, y_axis, color='red')
 ax.set_ylabel('Count')
 ax.set_xlabel('Letter')
 ax.set_title('Letter Counts in Scraped HTML')
 plt.show()
 
 
+c.close()

@@ -63,6 +63,18 @@ from [python.org](https://www.python.org/downloads/).
 
 ## 7. Documentation for Each Function (20 points)
 
+### Function; `fill_pokedex`
+
+- **Input:** pokeapi endpoint https://pokeapi.co/api/v2/pokedex/1
+- **Output:** a 2d array of Pokemon from the endpoint, grouped into groups of 25
+
+Sample output:\
+[\
+[Pokemon1, Pokemon2, ..., Pokemon25],\
+[Pokemon26, Pokemon27, ..., Pokemon50],\
+...\
+]
+
 ### Function: `pokedex_query`
 
 - **Input:** a list of Pokemon unique ids
@@ -71,6 +83,33 @@ from [python.org](https://www.python.org/downloads/).
 This function queries the local SQLite database for the existing API endpoint associated with each Pokemon.
 The function then searches for the Spanish flavor text of each Pokemon in the input list, and inserts it to the
 database.
+
+### Table: `pokdex`
+
+| Pokemon_ID (pk) | Name      | Pokemon URL                                  |
+|-----------------|-----------|----------------------------------------------|
+| 1               | Bulbasaur | https://pokeapi.co/api/v2/pokemon-species/1/ |
+| 2               | Ivysaur   | https://pokeapi.co/api/v2/pokemon-species/2/ |
+| 3               | Venusaur  | https://pokeapi.co/api/v2/pokemon-species/3/ |
+| ...             | ...       | ...                                          |
+
+### Table: `starters`
+
+| Pokemon_ID (pk) | Name      | Flavor Text (ES)                     |
+|-----------------|-----------|--------------------------------------|
+| 1               | Bulbasaur | Una rara semilla le fue plantada ... |
+| 2               | Ivysaur   | Este Pokémon tiene un bulbo en ...   |
+| 3               | Venusaur  | Llena su cuerpo de energía con ...   |
+| ...             | ...       | ...                                  |
+
+### Table: `bagofwords`
+
+| word (pk) | count | 
+|-----------|-------|
+| de        | 127   | 
+| Colombia  | 10    | 
+| Messi     | 5     | 
+| ...       | ...   | 
 
 ## 8. Resources Used (20 points)
 
